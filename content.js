@@ -60,4 +60,4 @@ if (window.hasRunNetflixBypassContentScript) {
 
     initialCleanup();
 
-} 
+}
