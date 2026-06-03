@@ -12,7 +12,7 @@ if (window.hasRunNetflixBypassContentScript) {
     window.hasRunNetflixBypassContentScript = true;
     // console.log("NF Bypass Content Script injected and running for the first time.");
 
-    const MODAL_SELECTOR = '.nf-modal.interstitial-full-screen';
+    const MODAL_SELECTOR = '.nf-modal.interstitial-full-screen, .nf-modal.uma-modal.two-section-uma';
     const BACKGROUND_SELECTOR = '.nf-modal-background[data-uia="nf-modal-background"]';
 
     function findAndRemoveModal(node) {
@@ -60,4 +60,4 @@ if (window.hasRunNetflixBypassContentScript) {
 
     initialCleanup();
 
-} 
+}
