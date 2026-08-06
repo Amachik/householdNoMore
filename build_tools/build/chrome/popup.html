@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NF Bypass Toggle</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="extension-header">
+        <h1 class="extension-title">Household Bypass</h1>
+        <p class="extension-subtitle">Network Filter Control</p>
+    </div>
+
+    <label class="toggle-container" for="toggleSwitch">
+        <div class="toggle-info">
+            <div class="toggle-label">Enable Bypass</div>
+            <div class="toggle-description">Toggle filtering</div>
+        </div>
+        <div class="modern-switch">
+            <input type="checkbox" id="toggleSwitch">
+            <span class="switch-slider"></span>
+        </div>
+    </label>
+
+    <div class="status-indicator status-inactive" id="statusIndicator">
+        <div class="status-dot"></div>
+        <span id="statusText">Extension is disabled</span>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

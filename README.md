@@ -7,7 +7,7 @@
 
 A browser extension aiming to bypass the Netflix household verification prompts by employing different strategies depending on the page context.
 
-**Supports:** `Chrome` (and Chromium-based browsers like Edge) | `Firefox`
+**Supports:** `Chrome` (and Chromium-based browsers like Edge) | `Firefox` | `Safari` (experimental, build-it-yourself)
 
 ---
 
@@ -51,6 +51,17 @@ As this extension is not published yet on chrome store, you need to load it manu
 7.  The extension should now be loaded and active for the current browser session.
     *   **Note:** Firefox temporary add-ons are removed when you close the browser. You will need to reload it each time you restart Firefox.
 
+**Safari (experimental):**
+
+Safari doesn't load raw extension folders the way Chrome/Firefox do — it needs the extension converted into a native Xcode project first. This path is **untested**; contributions/reports welcome.
+
+1.  Install full Xcode from the Mac App Store (the Command Line Tools alone are not enough), open it once to accept the license.
+2.  Download or clone this repository to your local machine.
+3.  Run `build_tools/build-for-safari.sh`. This stages the extension source and runs Apple's `safari-web-extension-converter`, producing an Xcode project in `build_tools/build/safari/`.
+    *   If the converter's flags have changed in your Xcode version, run `xcrun safari-web-extension-converter --help` and adjust the script accordingly.
+4.  Open the generated Xcode project, select your Team for code signing, and Run it. This installs a native app wrapper with the extension embedded.
+5.  Enable the extension in Safari's **Settings > Extensions**, and allow it permission to run on `netflix.com`.
+
 ---
 
 ## Caveats & Known Issues
@@ -60,6 +71,7 @@ As this extension is not published yet on chrome store, you need to load it manu
 *   **Netflix Updates:** Netflix frequently updates its website and internal APIs. Any changes to the GraphQL endpoint URL, the request structure, the page structure (`/watch/` path), or the modal's CSS selectors/HTML structure could break this extension partially or completely.
 *   **Console Errors:** When on a `/watch/` page, you **will** see network errors (often CORS-related) in the browser's developer console. This is an expected side effect of the extension successfully blocking the network request. While visually noisy, it generally does not impact performance.
 *   **Fragile css:** The modal hiding relies on specific CSS class names and `data-uia` attributes. These might change without notice.
+*   **Safari build is unverified:** The Safari build path (`build_tools/build-for-safari.sh`) has not been tested end-to-end. If you hit issues converting or running it, please open an issue.
 
 ---
 
